@@ -1,0 +1,16 @@
+.venv
+
+# Git
+.git
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+
+# IDE / OS files
+.idea/
+.vscode/
+__pycache__/
+*.pyc
+.DS_Store

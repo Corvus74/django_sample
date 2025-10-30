@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replacement Parts</title>
+</head>
+<body>
+    <h1>Replacement Parts</h1>
+    <ul>
+        {% for part in parts %}
+            <li>{{ part.name }} ({{ part.part_number }}) - ${{ part.price }}</li>
+        {% endfor %}
+    </ul>
+    <p><a href="/sample/">Back to Sample Page</a></p>
+    <p><a href="/">Go to Home Page</a></p>
+</body>
+</html>

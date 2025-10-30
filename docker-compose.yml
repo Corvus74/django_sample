@@ -1,0 +1,32 @@
+services:
+  db:
+    container_name: postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=django_sample
+      - POSTGRES_PASSWORD=secret123
+      - POSTGRES_USER=myuserHidden123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+  web:
+    build: .
+    command: sh -c "poetry install && poetry run python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+      - /app/.venv
+    ports:
+      - "8000:8000"
+    environment:
+      - API_KEY=your-secret-api-key
+      - POSTGRES_DB=django_sample
+      - POSTGRES_USER=myuserHidden123
+      - POSTGRES_PASSWORD=secret123
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
